@@ -1,0 +1,31 @@
+{
+  "name": "stay",
+  "version": "1.0.0",
+  "description": "Turn-based puzzle.",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover --print both nodeunit ./test/index.js",
+    "lint": "eslint .",
+    "coverage": "istanbul check-coverage --statements 100 --lines 100 --branches 100 --functions 100"
+  },
+  "author": "Jon Peck <jpeck@fluxsauce.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
+    "eslint-plugin-import": "^1.15.0",
+    "istanbul": "^0.4.5",
+    "nodeunit": "^0.10.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fluxsauce/stay.git"
+  },
+  "engines": {
+    "node": ">=6.6"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "lodash": "^4.16.2"
+  }
+}
