@@ -1,6 +1,10 @@
 const Coordinate = require('../lib/coordinate');
 
 module.exports = {
+  setUp(callback) {
+    this.coordinate = new Coordinate(0, 0);
+    callback();
+  },
   fail: {
     invalidCoordinates(test) {
       test.expect(2);
@@ -15,16 +19,20 @@ module.exports = {
       test.throws(() => new Coordinate(undefined, '1'), TypeError);
       test.done();
     },
+    invalidAdjacent(test) {
+      test.expect(1);
+      test.throws(() => this.coordinate.adjacent('F'));
+      test.done();
+    },
   },
   success: {
     validCoordinates(test) {
       test.expect(1);
-      const coordinate = new Coordinate(1, 1);
       test.deepEqual(
-        coordinate,
+        this.coordinate,
         {
-          x: 1,
-          y: 1,
+          x: 0,
+          y: 0,
         },
         'Unable to create valid Coordinate'
       );

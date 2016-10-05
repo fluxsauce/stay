@@ -1,18 +1,14 @@
 const Square = require('../lib/square');
+const Coordinate = require('../lib/coordinate');
 
 module.exports = {
   fail: {
-    invalidCoordinates(test) {
-      test.expect(2);
-      test.throws(() => new Square('fail', -1), TypeError);
-      test.throws(() => new Square('1', 'fail'), TypeError);
-      test.done();
-    },
+
   },
   success: {
     validCoordinates(test) {
       test.expect(1);
-      const square = new Square(1, 1);
+      const square = new Square(new Coordinate(1, 1));
       test.deepEqual(
         square,
         {
@@ -20,6 +16,7 @@ module.exports = {
             x: 1,
             y: 1,
           },
+          connections: [],
         },
         'Unable to create valid Square'
       );
@@ -27,13 +24,13 @@ module.exports = {
     },
     neighbors(test) {
       test.expect(1);
-      const square = new Square(0, 0);
+      const square = new Square(new Coordinate(0, 0));
       test.deepEqual(
         square.neighbors(),
         [
           { x: 0, y: 1 },
-          { x: 1, y: 0 },
           { x: 0, y: -1 },
+          { x: 1, y: 0 },
           { x: -1, y: 0 },
         ],
         'Unable to determine Neighbors of a Square'
